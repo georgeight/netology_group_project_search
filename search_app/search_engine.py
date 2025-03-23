@@ -10,7 +10,7 @@ class WordDocumentData(TypedDict):
     слова из поискового индекса в документ
     """
     document_id: int
-    count: int
+    word_tf: float
 
 
 class WordData(TypedDict):
@@ -87,6 +87,9 @@ class SearchEngine:
 
         Args:
             text (str): Текст для токенизации
+
+        Returns:
+            List[str]: Список токенов
         """
 
     def index(self, documents: List[str]) -> None:
