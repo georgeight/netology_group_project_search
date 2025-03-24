@@ -82,7 +82,8 @@ class SearchEngine:
     def __init__(self, db_path: str) -> None:
         pass
 
-    def _tokeinze(self, text: str) -> List[str]:
+    @staticmethod
+    def _tokeinze(text: str) -> List[str]:
         """Токенизация текста
 
         Args:
@@ -92,11 +93,11 @@ class SearchEngine:
             List[str]: Список токенов
         """
 
-    def index(self, documents: List[str]) -> None:
+    def index(self, documents_path: Path) -> None:
         """Индексирование документов
 
         Args:
-            documents (List[str]): Список документов
+            documents_path (Path): Путь к директории с документами
         """
 
     def search(self, query: str) -> List[str]:
