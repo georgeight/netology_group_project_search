@@ -1,7 +1,15 @@
 """Основная логика поискового движка"""
 
-from typing import List, TypedDict
+from typing import List, Dict, TypedDict
 from pathlib import Path
+
+
+class Document(TypedDict):
+    """
+    Определение типа данных для документа
+    """
+    document_id: int
+    document_content: str
 
 
 class WordDocumentData(TypedDict):
@@ -17,7 +25,6 @@ class WordData(TypedDict):
     """
     Определение типа данных для слова в поисковом индексе
     """
-    total_count: int
     documents: List[WordDocumentData]
 
 
@@ -30,11 +37,11 @@ class DocumentStorage:
     def __init__(self, db_path: Path) -> None:
         pass
 
-    def load_documents(self, documents: List[str]) -> None:
+    def load_documents(self, documents: List[Document]) -> None:
         """Загрузка документов в хранилище
         
         Args:
-            documents (List[str]): Список документов
+            documents (List[Document]): Список документов
         """
 
     def get_documents(self, keys: List[int]) -> List[str]:
@@ -54,22 +61,22 @@ class SearchIndex:
     def __init__(self, db_path: Path) -> None:
         pass
 
-    def update(self, words: List[WordData]) -> None:
+    def update(self, words: Dict[WordData]) -> None:
         """Обновление поискового индекса
 
         Args:
             words (WordData): Слова для обновления
         """
 
-    def search(self, words: List[WordData]) -> List[int]:
+    def search(self, words: List[str]) -> Dict[WordData]:
         """
         Поиск документов по запросу
         
         Args:
-            words (List[WordData]): Список слов для поиска
+            words (List[str]): Список слов для поиска
 
         Returns:
-            List[int]: Список ключей документов
+            Dict[WordData]: Результат
         """
 
 
